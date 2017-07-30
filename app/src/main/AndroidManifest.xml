@@ -7,7 +7,11 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <!--  Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name="com.example.csa.courseselectionapplication.app.AppController"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +27,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:label="@string/app_name">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.csa.courseselectionapplication.LoginActivity"></meta-data>
+        </activity>
+
         <activity
             android:name=".MainPage"
             android:label="@string/title_activity_main_page"
@@ -31,6 +44,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.csa.courseselectionapplication.LoginActivity" />
         </activity>
+
+
         <activity
             android:name=".CourseFilterActivity"
             android:label="@string/title_activity_course_filter"

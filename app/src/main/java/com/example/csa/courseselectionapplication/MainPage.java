@@ -12,13 +12,17 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import java.util.HashMap;
 
+import com.example.csa.courseselectionapplication.helper.SessionManager;
+import com.example.csa.courseselectionapplication.helper.SQLiteHandler;
 public class MainPage extends AppCompatActivity {
 
     private TextView mTextMessage;
     private TextView currentYear;
     private CalendarView calendarView;
     private LinearLayout planningView;
+    private LinearLayout homeView;
     private int year;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -28,16 +32,19 @@ public class MainPage extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    homeView.setVisibility(View.VISIBLE);
                     calendarView.setVisibility(View.GONE);
                     planningView.setVisibility(View.GONE);
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_calendar:
+                    homeView.setVisibility(View.GONE);
                     planningView.setVisibility(View.GONE);
                     calendarView.setVisibility(View.VISIBLE);
                     mTextMessage.setText(R.string.title_calendar);
                     return true;
                 case R.id.navigation_plan:
+                    homeView.setVisibility(View.GONE);
                     planningView.setVisibility(View.VISIBLE);
                     calendarView.setVisibility(View.GONE);
                     mTextMessage.setText(R.string.title_plan);
@@ -65,6 +72,9 @@ public class MainPage extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
 
         //
+        homeView = (LinearLayout) findViewById(R.id.home_view);
+        homeView.setVisibility(View.VISIBLE);
+
         planningView = (LinearLayout) findViewById(R.id.planning_form);
         planningView.setVisibility(View.GONE);
 

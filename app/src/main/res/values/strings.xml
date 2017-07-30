@@ -6,28 +6,16 @@
     <string name="prompt_password">Password</string>
     <string name="action_login">Login</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
 
-    <string name="title_activity_home_page">Home Page</string>
-    <string name="title_activity_select_term">Select Term</string>
     <string name="title_home">Home</string>
     <string name="title_calendar">Calendar</string>
     <string name="title_plan">Start Planning</string>
-    <string name="title_activity_settings_activity">Settings</string>
-    <string name="title_available">Available</string>
-    <string name="title_selected">Selected</string>
-    <string name="title_search">Advanced Search</string>
     <string name="title_activity_main_page">MainPage</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="title_activity_course_filter">CourseFilterActivity</string>
     <string name="action_advanced_search">Advanced Search</string>
-    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>
