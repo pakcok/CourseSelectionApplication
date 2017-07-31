@@ -16,8 +16,15 @@ import java.util.HashMap;
 
 import com.example.csa.courseselectionapplication.helper.SessionManager;
 import com.example.csa.courseselectionapplication.helper.SQLiteHandler;
+
+import org.w3c.dom.Text;
+
 public class MainPage extends AppCompatActivity {
 
+    private SQLiteHandler db;
+    private SessionManager session;
+
+    private TextView fullName;
     private TextView mTextMessage;
     private TextView currentYear;
     private CalendarView calendarView;
@@ -69,6 +76,22 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
+        // Fetching user details from SQLite
+        HashMap<String, String> student = db.getUserDetails();
+
+        String first_name = student.get("first_name");
+        String last_name = student.get("last_name");
+
+        fullName = (TextView) findViewById(R.id.full_name);
+        fullName.setText(first_name);
+
+
         mTextMessage = (TextView) findViewById(R.id.message);
 
         //
@@ -95,6 +118,11 @@ public class MainPage extends AppCompatActivity {
         //Next button direction
         Button nextButton = (Button) findViewById(R.id.planNext_Button);
         nextButton.setOnClickListener(mOnClickListener);
+
+
+
+
+
 
     }
 

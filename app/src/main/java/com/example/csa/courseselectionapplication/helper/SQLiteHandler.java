@@ -25,9 +25,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
     // Login Table Columns names
     private static final String KEY_ID = "id";
-    private static final String KEY_FNAME = "first name";
-    private static final String KEY_LNAME = "last name";
-    private static final String KEY_UNAME = "user name";
+    private static final String KEY_F_NAME = "first_name";
+    private static final String KEY_L_NAME = "last_name";
+    private static final String KEY_USER = "username";
     private static final String KEY_EMAIL = "email";
 
     public SQLiteHandler(Context context) {
@@ -38,8 +38,11 @@ public class SQLiteHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_FNAME + " TEXT," + KEY_LNAME + " TEXT," + KEY_UNAME + " TEXT,"
-                + KEY_EMAIL + " TEXT UNIQUE)";
+                + KEY_ID + " INTEGER PRIMARY KEY," 
+				+ KEY_F_NAME + " TEXT," 
+				+ KEY_L_NAME + " TEXT," 
+				+ KEY_USER + " TEXT,"
+                + KEY_EMAIL + " TEXT"+")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
@@ -63,9 +66,9 @@ public class SQLiteHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_ID, id); // Student ID
-        values.put(KEY_FNAME, first_name); // First Name
-        values.put(KEY_LNAME, last_name); // Last Name
-        values.put(KEY_UNAME, username); // User Name
+        values.put(KEY_F_NAME, first_name); // First Name
+        values.put(KEY_L_NAME, last_name); // Last Name
+        values.put(KEY_USER, username); // User Name
         values.put(KEY_EMAIL, email); // Email
 
 
@@ -80,7 +83,7 @@ public class SQLiteHandler extends SQLiteOpenHelper {
      * Getting user data from database
      * */
     public HashMap<String, String> getUserDetails() {
-        HashMap<String, String> user = new HashMap<String, String>();
+        HashMap<String, String> student = new HashMap<String, String>();
         String selectQuery = "SELECT  * FROM " + TABLE_USER;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -88,19 +91,19 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         // Move to first row
         cursor.moveToFirst();
         if (cursor.getCount() > 0) {
-            user.put("id", cursor.getString(0));
-            user.put("first_name", cursor.getString(1));
-            user.put("last_name", cursor.getString(2));
-            user.put("username", cursor.getString(3));
-            user.put("email", cursor.getString(4));
+            student.put("id", cursor.getString(1));
+            student.put("first_name", cursor.getString(2));
+            student.put("last_name", cursor.getString(3));
+            student.put("username", cursor.getString(4));
+            student.put("email", cursor.getString(5));
 
         }
         cursor.close();
         db.close();
         // return user
-        Log.d(TAG, "Fetching user from Sqlite: " + user.toString());
+        Log.d(TAG, "Fetching user from Sqlite: " + student.toString());
 
-        return user;
+        return student;
     }
 
     /**

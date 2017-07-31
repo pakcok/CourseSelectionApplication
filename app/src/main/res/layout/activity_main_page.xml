@@ -27,13 +27,13 @@
             android:text="Welcome"
             android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Student Name"
-            android:textSize="24dp" />
+            <TextView
+                android:id="@+id/full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Student Name"
+                android:textSize="24dp" />
 
         <TextView
             android:id="@+id/email"

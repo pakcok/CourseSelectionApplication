@@ -33,7 +33,7 @@
             android:label="@string/app_name">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.csa.courseselectionapplication.LoginActivity"></meta-data>
+                android:value="com.example.csa.courseselectionapplication.LoginActivity" />
         </activity>
 
         <activity
