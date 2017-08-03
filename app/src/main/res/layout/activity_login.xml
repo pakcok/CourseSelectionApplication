@@ -88,11 +88,20 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:onClick="goHome"
+
                 android:text="@string/action_login"
                 android:textAllCaps="false"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            <Button
+                android:id="@+id/reg_button"
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Register"
+                android:textSize="15dp" />
 
         </LinearLayout>
     </ScrollView>

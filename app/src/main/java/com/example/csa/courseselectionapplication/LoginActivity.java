@@ -28,28 +28,33 @@ import com.example.csa.courseselectionapplication.app.AppController;
 import com.example.csa.courseselectionapplication.helper.SQLiteHandler;
 import com.example.csa.courseselectionapplication.helper.SessionManager;
 
-import static android.Manifest.permission.READ_CONTACTS;
-
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();
+
     private Button btnLogin;
-    private EditText inputUserName;
+    private EditText inputStudentID;
     private EditText inputPassword;
     private SessionManager session;
     private SQLiteHandler db;
+
+    private Button btnLinkToRegister;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        inputUserName = (EditText) findViewById(R.id.user_id);
+        inputStudentID = (EditText) findViewById(R.id.user_id);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.login_button);
+
+
+        //For create student with encrypted password
+        btnLinkToRegister = (Button) findViewById(R.id.reg_button);
 
 
         // SQLite database handler
@@ -62,13 +67,13 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String username = inputUserName.getText().toString();
+                String student_id = inputStudentID.getText().toString();
                 String password = inputPassword.getText().toString();
 
                 // Check for empty data in the form
-                if (!username.isEmpty() && !password.isEmpty()) {
+                if (!student_id.isEmpty() && !password.isEmpty()) {
                     // login user
-                    checkLogin(username, password);
+                    checkLogin(student_id, password);
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
@@ -78,12 +83,24 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        // Link to Register Screen
+        btnLinkToRegister.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),
+                        RegisterActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
     }
 
     /**
      * function to verify login details in mysql db
      * */
-    private void checkLogin(final String username, final String password) {
+    private void checkLogin(final String student_id, final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
@@ -104,20 +121,20 @@ public class LoginActivity extends AppCompatActivity {
                         // Create login session
                         session.setLogin(true);
 
+                        /*
                         // Now store the user in SQLite
-                        String student_id = jObj.getString("student_id");
-
+                        String id = jObj.getString("id");
                         JSONObject student = jObj.getJSONObject("student");
-                        String first_name = student.getString("first_name");
-                        String last_name = student.getString("last_name");
                         String username = student.getString("username");
-                        String email = student.getString("email");
+                        String student_id = student.getString("student_id");
 
                         // Inserting row in users table
-                        db.addUser(first_name, last_name, username, email, student_id);
+                        db.addUser(username, student_id, id);
+                        */
 
                         // Launch main activity
                         Intent intent = new Intent(LoginActivity.this, MainPage.class);
+                        intent.putExtra("student_id", student_id);
                         startActivity(intent);
                         finish();
                     } else {
@@ -147,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("username", username);
+                params.put("student_id", student_id);
                 params.put("password", password);
 
                 return params;

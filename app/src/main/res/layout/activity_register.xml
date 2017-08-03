@@ -20,17 +20,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:padding="10dp"
-            android:singleLine="true"
-            android:inputType="textCapWords" />
+            android:hint="Username" />
 
         <EditText
-            android:id="@+id/reg_email"
-            android:layout_width="fill_parent"
+            android:id="@+id/reg_student_id"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:singleLine="true" />
+            android:hint="StudentID" />
 
         <EditText
             android:id="@+id/reg_password"
@@ -39,7 +37,7 @@
             android:layout_marginBottom="10dp"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:singleLine="true" />
+            android:hint="Password" />
 
         <!-- Login Button -->
 

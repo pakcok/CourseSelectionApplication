@@ -20,12 +20,11 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome"
-            android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/full_name"
@@ -35,20 +34,13 @@
                 android:text="Student Name"
                 android:textSize="24dp" />
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="13dp" />
+            <TextView
+                android:id="@+id/gpa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current GPA: (Current GPA)"
+                android:textSize="18dp" />
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textSize="15dp" />
         </LinearLayout>
 
         <TextView

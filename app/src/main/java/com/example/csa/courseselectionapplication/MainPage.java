@@ -27,6 +27,7 @@ public class MainPage extends AppCompatActivity {
     private TextView fullName;
     private TextView mTextMessage;
     private TextView currentYear;
+    private TextView gpa;
     private CalendarView calendarView;
     private LinearLayout planningView;
     private LinearLayout homeView;
@@ -76,20 +77,34 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+		fullName = (TextView) findViewById(R.id.full_name);
+        //gpa = (TextView) findViewById(R.id.gpa);
+		
         // SqLite database handler
         db = new SQLiteHandler(getApplicationContext());
 
         // session manager
         session = new SessionManager(getApplicationContext());
 
+        // Getting data from previous activity
+        String student_id = getIntent().getStringExtra("student_id");
+
         // Fetching user details from SQLite
-        HashMap<String, String> student = db.getUserDetails();
+        HashMap<String, String> student = db.getUserDetails(student_id);
 
-        String first_name = student.get("first_name");
-        String last_name = student.get("last_name");
+        //String student_id = student.get("student_id");
+        String username = student.get("username");
+        // Displaying the student details on the screen
+        fullName.setText(username);
 
-        fullName = (TextView) findViewById(R.id.full_name);
-        fullName.setText(first_name);
+        /*
+        HashMap<String, String> student_GPA = db.getGPA(student_id);
+        int sumGrade = Integer.parseInt(student_GPA.get("sumGrade"));
+        int sumUnit = Integer.parseInt(student_GPA.get("sumUnit"));
+
+        gpa.setText(sumGrade);
+        */
+
 
 
         mTextMessage = (TextView) findViewById(R.id.message);
